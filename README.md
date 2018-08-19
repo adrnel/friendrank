@@ -1,16 +1,18 @@
 # friendrank
 A application to rank friends at games
 
-![Crazy Cards Image](https://user-images.githubusercontent.com/14028071/43489951-a485f4c8-9516-11e8-85d7-882c053d281c.png)
-
 ## Dependancies
+This application requires node to run the Express server and npm to install Node Packages
+- Node version 8 or higher
+- npm version 6 or higher
+Once NPM is install, install the following packages globally
 
-Node version 8
-npm version 6
+```
+npm install -g eslint
+```
 
-## Get Started
-
-This you can get this project up and running with the following commands:
+## Running the app
+You can get this project up and running with the following commands:
 
 ```
 npm install
