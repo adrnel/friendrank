@@ -1,4 +1,3 @@
-/*** webpack.config.js ***/
 const path = require('path');
 module.exports = {
     entry: path.join(__dirname, '/src/app.js'),
@@ -13,6 +12,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg)$/,
+                loader: 'file-loader?name=fonts/[name].[ext]'
             }
         ]
     },
@@ -23,5 +26,5 @@ module.exports = {
         path: path.resolve(__dirname, 'static'),
         filename: 'bundle.js'
     },
-    mode: 'development'
+    mode: 'development',
 };
