@@ -9,9 +9,7 @@ class League extends Component {
 
     render() {
         return (
-            <div className='league'>
-                League
-            </div>
+            <div/>
         );
     }
 }

@@ -2,10 +2,12 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import HomeIcon from '@material-ui/icons/Home';
+import LeagueIcon from '@material-ui/icons/Gamepad';
+import ProfileIcon from '@material-ui/icons/AccountCircle';
+import SettingsIcon from '@material-ui/icons/Settings';
 import { withRouter }  from 'react-router-dom';
+import './Footer.css';
 
 const styles = {
     root: {
@@ -41,11 +43,12 @@ class Footer extends React.Component {
                 onChange={this.handleChange}
                 showLabels
                 style={{position: 'fixed', bottom:'0', width:'100%'}}
+                MuiBottomNavigation={{color: 'gold'}}
             >
-                <BottomNavigationAction label="home" icon={<RestoreIcon />} />
-                <BottomNavigationAction label="league" icon={<FavoriteIcon />} />
-                <BottomNavigationAction label="profile" icon={<LocationOnIcon />} />
-                <BottomNavigationAction label="settings" icon={<LocationOnIcon />} />
+                <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+                <BottomNavigationAction label="League" icon={<LeagueIcon />} />
+                <BottomNavigationAction label="Profile" icon={<ProfileIcon />} />
+                <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />
             </BottomNavigation>
         );
     }
