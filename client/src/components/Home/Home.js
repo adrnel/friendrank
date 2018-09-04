@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewLeagueButton from './NewLeagueButton';
 import './Home.css';
 
 class Home extends Component {
@@ -9,7 +10,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div/>
+            <div><NewLeagueButton/></div>
         );
     }
 }

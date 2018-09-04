@@ -1,3 +1,6 @@
-.MuiButtonBase-root-8.MuiBottomNavigationAction-root-3.MuiBottomNavigationAction-selected-4 {
-    color: gold;
+.footer {
+    border-top: 1px solid #3f51b5;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

@@ -1,3 +1,7 @@
-.home {
-    background-color: red;
+.home {}
+
+.home__button{
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
 }

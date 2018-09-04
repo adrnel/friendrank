@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from'react-dom';
 import 'typeface-roboto';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -9,7 +9,7 @@ import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-class App extends React.Component {
+class App extends Component {
     constructor(props) {
         super(props);
         this.state = {selectedIndex: 0, route: 'Home'};

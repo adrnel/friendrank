@@ -38,18 +38,18 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <BottomNavigation
-                value={this.props.selectedIndex}
-                onChange={this.handleChange}
-                showLabels
-                style={{position: 'fixed', bottom:'0', width:'100%'}}
-                MuiBottomNavigation={{color: 'gold'}}
-            >
-                <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-                <BottomNavigationAction label="League" icon={<LeagueIcon />} />
-                <BottomNavigationAction label="Profile" icon={<ProfileIcon />} />
-                <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />
-            </BottomNavigation>
+            <div className='footer'>
+                <BottomNavigation
+                    value={this.props.selectedIndex}
+                    onChange={this.handleChange}
+                    showLabels
+                >
+                    <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+                    <BottomNavigationAction label="League" icon={<LeagueIcon />} />
+                    <BottomNavigationAction label="Profile" icon={<ProfileIcon />} />
+                    <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />
+                </BottomNavigation>
+            </div>
         );
     }
 }
