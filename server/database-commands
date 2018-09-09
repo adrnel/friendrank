@@ -1,0 +1,67 @@
+// Setting up from scratch
+SHOW DATABASES;
+CREATE DATABASE leaderboard;
+USE leaderboard;
+CREATE TABLE users (
+    user_id int NOT NULL AUTO_INCREMENT,
+    username varchar(255),
+    email varchar(255),
+	PRIMARY KEY (user_id)
+);
+CREATE TABLE leaderboards (
+    leaderboard_id int NOT NULL AUTO_INCREMENT,
+    leaderboard_name varchar(255),
+    leaderboard_description varchar(255),
+    PRIMARY KEY (leaderboard_id)
+);
+INSERT INTO `leaderboard`.`users` (`user_id`, `username`, `email`) VALUES ('1', 'Adrian', 'a@mail.com');
+INSERT INTO `leaderboard`.`users` (`user_id`, `username`, `email`) VALUES ('2', 'Brandon', 'b@mail.com');
+INSERT INTO `leaderboard`.`users` (`user_id`, `username`, `email`) VALUES ('3', 'Carlton', 'c@mail.com');
+INSERT INTO `leaderboard`.`users` (`user_id`, `username`, `email`) VALUES ('4', 'Dalton', 'd@mail.com');
+INSERT INTO `leaderboard`.`users` (`user_id`, `username`, `email`) VALUES ('5', 'Ethan', 'e@mail.com');
+INSERT INTO `leaderboard`.`users` (`user_id`, `username`, `email`) VALUES ('6', 'Fenton', 'f@mail.com');
+INSERT INTO `leaderboard`.`leaderboards` (`leaderboard_id`, `leaderboard_name`, `leaderboard_description`) VALUES ('1', 'FIFA 19 Manchester University Leaderboard', 'A leaderboard for Fifa 19 on PS4');
+INSERT INTO `leaderboard`.`leaderboards` (`leaderboard_id`, `leaderboard_name`, `leaderboard_description`) VALUES ('2', 'Whitbread leaderboard', 'A leaderboard for playing pool at Whitbread');
+INSERT INTO `leaderboard`.`leaderboards` (`leaderboard_id`, `leaderboard_name`, `leaderboard_description`) VALUES ('3', 'East London Tennis Leaderboard', 'Tennis Leaderboard for east londons finest');
+CREATE TABLE results (
+    results_id int NOT NULL AUTO_INCREMENT,
+    leaderboard_id int(255),
+    player_one_id int(255),
+    player_one_score varchar(255),
+    player_two_id int(255),
+    player_two_score varchar(255),
+    outcome varchar(255),
+    PRIMARY KEY (results_id),
+    FOREIGN KEY (leaderboard_id) REFERENCES leaderboards(leaderboard_id),
+    FOREIGN KEY (player_one_id) REFERENCES users(user_id),
+    FOREIGN KEY (player_two_id) REFERENCES users(user_id)
+);
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('1', '1', '1', '5', '2', '2', 'win');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('2', '1', '1', '4', '2', '0', 'win');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('3', '1', '1', '2', '2', '3', 'lose');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('4', '1', '1', '2', '2', '2', 'draw');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('5', '1', '1', '4', '3', '3', 'win');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('6', '1', '1', '2', '4', '0', 'win');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('7', '1', '2', '1', '3', '2', 'draw');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('8', '2', '1', '4', '4', '0', 'win');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('9', '2', '3', '4', '1', '2', 'win');
+INSERT INTO `leaderboard`.`results` (`results_id`, `leaderboard_id`, `player_one_id`, `player_one_score`, `player_two_id`, `player_two_score`, `outcome`) VALUES ('10', '3', '1', '6', '2', '3', 'win');
+CREATE TABLE Ratings (
+    ratings_id int NOT NULL AUTO_INCREMENT,
+    user_id int(255),
+    leaderboard_id int(255),
+    elo_rating int(255),
+    PRIMARY KEY (ratings_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (leaderboard_id) REFERENCES leaderboards(leaderboard_id)
+);
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('1', '1', '1', '1200');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('2', '1', '2', '1100');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('3', '1', '3', '1000');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('4', '2', '1', '900');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('5', '2', '2', '1100');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('6', '2', '3', '1220');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('7', '3', '1', '1000');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('8', '4', '1', '900');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('9', '5', '1', '1100');
+INSERT INTO `leaderboard`.`ratings` (`ratings_id`, `user_id`, `leaderboard_id`, `elo_rating`) VALUES ('10', '6', '1', '800');
