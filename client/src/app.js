@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import './app.css';
 
 class App extends Component {
     constructor(props) {
@@ -23,12 +24,12 @@ class App extends Component {
 
     render() {
         return <Router>
-            <div>
-                <Route exact path="/" component={Home} />
+            <div className="app-body">
+                <Header title={this.state.route}/>
+                <Route exact path="/" render={()=><Home leagues={this.state.leagues} /> } />
                 <Route path="/league" component={League} />
                 <Route path="/profile" component={Profile} />
                 <Route path="/settings" component={Settings} />
-                <Header title={this.state.route}/>
                 <Footer selectedIndex={this.state.selectedIndex} updateSelectedIndex={this.updateSelectedIndex}/>
             </div>
         </Router>;

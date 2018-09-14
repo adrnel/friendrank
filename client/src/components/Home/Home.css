@@ -5,3 +5,30 @@
     bottom: 70px;
     right: 10px;
 }
+
+.card__component{
+    margin: auto;
+    max-width: 300px;
+    margin-top: 40px;
+}
+
+.card__title{
+    text-align: center;
+    color: white;
+    background: silver;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.card__description{
+    text-align: center;
+    padding: 20px;
+}
+
+@media only screen and (min-width: 600px) {
+    .card__component{
+        margin: auto;
+        max-width: 500px;
+        margin-top: 40px;
+    }
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewLeagueButton from './NewLeagueButton';
+import Cards from './Cards';
 import './Home.css';
 
 class Home extends Component {
@@ -9,8 +10,12 @@ class Home extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
-            <div><NewLeagueButton/></div>
+            <div>
+                <Cards leagues={this.props.leagues}/>
+                <NewLeagueButton/>
+            </div>
         );
     }
 }
