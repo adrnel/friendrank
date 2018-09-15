@@ -8,13 +8,34 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+// This import loads the firebase namespace along with all its type information.
+import firebase from 'firebase/app';
 import './app.css';
+
+// These imports load individual services into the firebase namespace.
+import 'firebase/database';
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedIndex: 0, route: 'Home'};
+        this.state = {selectedIndex: 0, route: 'Home', leagues: []};
         this.updateSelectedIndex = this.updateSelectedIndex.bind(this);
+        var config = {
+            apiKey: process.env.LEADERBOARD_API_KEY,
+            authDomain: process.env.LEADERBOARD_AUTH_DOMAIN,
+            databaseURL: process.env.LEADERBOARD_DATABASE_URL,
+            projectId: process.env.LEADERBOARD_PROJECT_ID,
+            storageBucket: process.env.LEADERBOARD_STORAGE_BUCKET,
+            messagingSenderId: process.env.LEADERBOARD_MESSAGING_SENDER_ID
+        };
+        firebase.initializeApp(config);
+        const dbref = firebase.database().ref().child('leagues');
+        dbref.on('value', (snapshot) => {
+            const value = snapshot.val();
+            console.log(value);
+            this.setState({ leagues: value }, () => console.log('state: ', this.state));
+        });
+
     }
 
     updateSelectedIndex (value) {
@@ -27,7 +48,7 @@ class App extends Component {
             <div className="app-body">
                 <Header title={this.state.route}/>
                 <Route exact path="/" render={()=><Home leagues={this.state.leagues} /> } />
-                <Route path="/league" component={League} />
+                <Route path="/league" render={()=><League league={this.state.leagues[0]} /> } />
                 <Route path="/profile" component={Profile} />
                 <Route path="/settings" component={Settings} />
                 <Footer selectedIndex={this.state.selectedIndex} updateSelectedIndex={this.updateSelectedIndex}/>

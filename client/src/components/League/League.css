@@ -1,3 +1,41 @@
 .league {
     background-color: blue;
 }
+
+.leaderboard {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.leaderboard__header {
+    background-color: #99cfff;
+    color: white;
+}
+
+.leaderboard__header-title {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 20px 0;
+}
+
+.leaderboard__header-image img {
+    max-width: 130px;
+    border-radius: 100px;
+    vertical-align: middle;
+    background-color: white;
+    border-style: none;
+}
+
+.leaderboard__header-description {
+    padding: 10px 0;
+}
+
+@media only screen and (min-width: 550px) {
+    .leaderboard {
+        margin: auto;
+        max-width: 500px;
+        text-align: center;
+    }
+}
