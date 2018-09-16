@@ -3,8 +3,6 @@
 }
 
 .leaderboard {
-    margin-left: 20px;
-    margin-right: 20px;
     text-align: center;
 }
 
@@ -30,6 +28,18 @@
 
 .leaderboard__header-description {
     padding: 10px 0;
+}
+
+.leaderboard__table {
+    width: 100%;
+}
+
+.leaderboard__table img {
+    max-width: 50px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
 
 @media only screen and (min-width: 550px) {

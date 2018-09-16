@@ -3,15 +3,23 @@ import Card from '@material-ui/core/Card';
 
 const Cards = (props) => {
     console.log('props 1: ', props);
-    if(props.leagues) {
-        return props.leagues.map((card) => {
-            return(
-                <Card key={card.leagueId} className="card__component">
-                    <div className="card__title">{card.leagueName}</div>
-                    <div className="card__description">{card.leagueDescription}</div>
-                </Card>
-            );
-        });
+    if(props.players) {
+        return (
+            <table className="leaderboard__table">
+                <tbody>
+                    {props.players.map((player, index) => {
+                        return(
+                            <tr key={player.id}>
+                                <td>{index + 1}</td>
+                                <td><img src={player.profileImageURL}></img></td>
+                                <td>{player.name}</td>
+                                <td>{player.elo}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+        );
     }
 };
 

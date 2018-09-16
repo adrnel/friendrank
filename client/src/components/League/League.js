@@ -18,6 +18,7 @@ class League extends Component {
                         <div className="leaderboard__header-image"><img src={this.props.league.leagueImageURL}></img></div>
                         <div className="leaderboard__header-description">{this.props.league.leagueDescription}</div>
                     </div>
+                    <Table players={this.props.league.players}/>
                 </div>
             );
         } else {
