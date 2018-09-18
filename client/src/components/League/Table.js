@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '@material-ui/core/Card';
 
 const Cards = (props) => {
     console.log('props 1: ', props);
@@ -20,6 +19,8 @@ const Cards = (props) => {
                 </tbody>
             </table>
         );
+    } else {
+        return <div>There are no players in this league</div>;
     }
 };
 

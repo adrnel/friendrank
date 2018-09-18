@@ -11,12 +11,17 @@ class Home extends Component {
 
     render() {
         console.log(this.props);
-        return (
-            <div>
-                <Cards leagues={this.props.leagues}/>
-                <NewLeagueButton/>
-            </div>
-        );
+        if (this.props.leagues){
+            return (
+                <div>
+                    <Cards leagues={this.props.leagues} selectLeague={this.props.selectLeague}/>
+                    <NewLeagueButton/>
+                </div>
+            );
+        } else {
+            return <div>Please select a league2</div>;
+        }
+
     }
 }
 

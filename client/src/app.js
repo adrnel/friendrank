@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { withRouter }  from 'react-router-dom';
 // This import loads the firebase namespace along with all its type information.
 import firebase from 'firebase/app';
 import './app.css';
@@ -18,8 +19,9 @@ import 'firebase/database';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {selectedIndex: 0, route: 'Home', leagues: []};
+        this.state = {selectedIndex: 0, route: 'Home', leagues: [], selectedLeague: {}};
         this.updateSelectedIndex = this.updateSelectedIndex.bind(this);
+        this.selectLeague = this.selectLeague.bind(this);
         var config = {
             apiKey: process.env.LEADERBOARD_API_KEY,
             authDomain: process.env.LEADERBOARD_AUTH_DOMAIN,
@@ -33,7 +35,7 @@ class App extends Component {
         dbref.on('value', (snapshot) => {
             const value = snapshot.val();
             console.log(value);
-            this.setState({ leagues: value }, () => console.log('state: ', this.state));
+            this.setState({ leagues: value, selectedLeague:value[0] }, () => console.log('state: ', this.state));
         });
 
     }
@@ -43,12 +45,18 @@ class App extends Component {
         this.setState({ selectedIndex: value, route: routeMap[value], });
     }
 
+    selectLeague (selectedLeagueId) {
+        const selectedLeague = this.state.leagues.find((league) => league.leagueId === selectedLeagueId);
+        this.setState({ selectedLeague }, () => console.log('state: ', this.state));
+        this.updateSelectedIndex(1);
+    }
+
     render() {
         return <Router>
             <div className="app-body">
                 <Header title={this.state.route}/>
-                <Route exact path="/" render={()=><Home leagues={this.state.leagues} /> } />
-                <Route path="/league" render={()=><League league={this.state.leagues[0]} /> } />
+                <Route exact path="/" render={()=><Home leagues={this.state.leagues} selectLeague={this.selectLeague} /> } />
+                <Route path="/league" render={()=><League league={this.state.selectedLeague} /> } />
                 <Route path="/profile" component={Profile} />
                 <Route path="/settings" component={Settings} />
                 <Footer selectedIndex={this.state.selectedIndex} updateSelectedIndex={this.updateSelectedIndex}/>
@@ -57,4 +65,5 @@ class App extends Component {
     }
 }
 
+export default withRouter(App);
 ReactDOM.render(<App />, document.getElementById('root'));
