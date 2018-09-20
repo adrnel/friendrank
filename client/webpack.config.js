@@ -23,7 +23,7 @@ module.exports = {
         extensions: ['.js', '.jsx']
     },
     output: {
-        path: path.resolve(__dirname, 'static'),
+        path: path.resolve(__dirname, 'public/generated'),
         filename: 'bundle.js'
     },
     mode: 'development',
