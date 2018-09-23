@@ -7,7 +7,6 @@ import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import { withRouter }  from 'react-router-dom';
 // This import loads the firebase namespace along with all its type information.
 import firebase from 'firebase/app';
 import './app.css';
@@ -64,5 +63,5 @@ class App extends Component {
     }
 }
 
-export default withRouter(App);
+export default App;
 ReactDOM.render(<App />, document.getElementById('root'));
